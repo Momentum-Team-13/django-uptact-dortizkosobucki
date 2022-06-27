@@ -15,11 +15,19 @@
       <div>
         {{ contact.address_1 }}<br />
         {% if contact.address_2 %}
-          {{ contact.address_2 }}<br />
+        {{ contact.address_2 }}<br />
         {% endif %}
         {{ contact.city }}, {{ contact.state }} {{ contact.zip_code }}
       </div>
     </div>
+
+    {% if contact.birthday %}
+    <div class="flex">
+      <div class="pr2"><i class="icofont-birthday"></i></div>
+      <div>{{ contact.birthday }}</div>
+    </div>
+    {% endif %}
+
 
     {% if contact.phone_number %}
     <div class="flex">
@@ -36,10 +44,10 @@
     {% endif %}
 
     <p>
-      <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>    
+      <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>
       <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
     </p>
   </div>
   {% endfor %}
-</div>  
+</div>
 {% endblock %}
