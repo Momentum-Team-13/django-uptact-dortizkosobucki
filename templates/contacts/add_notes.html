@@ -6,7 +6,7 @@
 <div>
     <form action="{% url 'add_notes' pk=contact.pk %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ new_note.as_p }}
         <div>
             <button type="submit">Add Notes to Contact</button>
         </div>

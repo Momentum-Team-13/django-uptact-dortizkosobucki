@@ -24,14 +24,15 @@ def add_contact(request):
 def add_notes(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     if request.method == 'GET':
-        form = NoteForm()
+        new_note = NoteForm()
     else:
-        form = NoteForm(data=request.POST)
-        if form.is_valid():
-            form.save()
+        new_note = NoteForm(data=request.POST)
+        if new_note.is_valid():
+            new_note.contact=contact
+            new_note.save()
             return redirect(to='list_contacts')
 
-    return render(request, "contacts/add_notes.html", {"contact": contact, "form": form})
+    return render(request, "contacts/add_notes.html", {"contact": contact, "new_note": new_note})
 
 def edit_contact(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
