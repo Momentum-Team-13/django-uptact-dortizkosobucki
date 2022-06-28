@@ -50,4 +50,8 @@ def delete_contact(request, pk):
 def view_contact(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     return render(request, "contacts/view_contact.html", {"contact":contact})
-    
+
+def view_notes(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    if request.method == 'POST':
+        return render(request, "notes/view_note.html")
