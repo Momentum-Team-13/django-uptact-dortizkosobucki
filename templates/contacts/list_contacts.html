@@ -43,7 +43,18 @@
     </div>
     {% endif %}
 
+    {% if contact.note %}
+    <div class="flex">
+      <div class="pr2">
+        <div>
+          <h5>Note:</h5>{{ contact.note.content }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
     <p>
+      <a href="{% url 'add_notes' pk=contact.pk %}">Add Notes to Contact</a><br>
       <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>
       <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
     </p>

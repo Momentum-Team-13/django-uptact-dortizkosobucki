@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Contacts</h1>
+
+<p><a href="{% url 'add_contact' %}">Add New Contact</a></p>
+
+<div class="flex flex-wrap">
+
+    <div class="w-33 pa3">
+        <h2>{{ contact.name }}</h2>
+        <div class="flex">
+            {% if contact.note %}
+            <div class="flex">
+                <div class="pr2">
+                    <div>{{ contact.note }}</div>
+                </div>
+            </div>
+            {% endif %}
+            <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>
+            <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
+            </p>
+        </div>
+
+    </div>
+    {% endblock %}

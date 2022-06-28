@@ -26,8 +26,3 @@ class Note(models.Model):
     content = models.CharField(max_length=250, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     
-
-# class Favorite(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, releated_name="favorites")
-#     contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name="favorites")
- 
