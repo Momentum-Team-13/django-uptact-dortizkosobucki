@@ -24,9 +24,8 @@ urlpatterns = [
     path('contacts/add/', contacts_views.add_contact, name='add_contact'),
     path('contacts/<int:pk>/edit/', contacts_views.edit_contact, name='edit_contact'),
     path('contacts/<int:pk>/delete/',contacts_views.delete_contact,name='delete_contact'),
-    path('contacts/<int:pk>/', contacts_views.view_contact, name='view_contact'),
-    path('contacts/<int:pk>/notes/', contacts_views.view_notes, name='view_notes'),
-    path('contacts/<int:pk>/add_note/', contacts_views.add_notes, name='add_notes'),
+    path('contacts/<int:pk>/individual', contacts_views.individual_contact, name='individual_contact'),
+    path('contacts/<int:pk>/notes/', contacts_views.add_contact_note, name='add_contact_note'),
 ]
 
 if settings.DEBUG:

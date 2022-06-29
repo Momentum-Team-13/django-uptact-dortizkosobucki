@@ -9,6 +9,7 @@
   {% for contact in contacts %}
   <div class="w-33 pa3">
     <h2>{{ contact.name }}</h2>
+    <a href="{% url 'individual_contact' pk=contact.pk %}">View {{ contact.name }}</a>
 
     <div class="flex">
       <div class="pr2"><i class="icofont-location-pin"></i></div>
@@ -42,7 +43,7 @@
       <div>{{ contact.email }}</div>
     </div>
     {% endif %}
-
+    <!-- 
     {% if note.contact %}
     <div class="flex">
       <div class="pr2">
@@ -51,10 +52,10 @@
         </div>
       </div>
     </div>
-    {% endif %}
+    {% endif %} -->
 
     <p>
-      <a href="{% url 'add_notes' pk=contact.pk %}">Add Notes to Contact</a><br>
+      <!-- <a href="{% url 'individual_contact' pk=contact.pk %}">Ind Contact</a><br> -->
       <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>
       <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
     </p>
