@@ -35,19 +35,6 @@ def edit_contact(request, pk):
         "contact": contact
     })
 
-def add_contact_note(request, pk):
-    contact = get_object_or_404(Contact, pk=pk)
-    if request.method == 'GET':
-        new_note = NoteForm()
-    else:
-        new_note = NoteForm(data=request.POST)
-        if new_note.is_valid():
-            new_note.contact=contact
-            new_note.save(commit=False)
-            new_note.save()
-            return redirect(to='list_contacts')
-    return render (request, "contact/individual_contact.html", {"form": form, "contact":contact})
-
 def delete_contact(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     if request.method == 'POST':
@@ -58,7 +45,15 @@ def delete_contact(request, pk):
 
 def individual_contact(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
-    return render(request, "contacts/individual_contact.html", {"contact":contact})
+    if request.method == 'GET':
+        note_form = NoteForm()
+    else:
+        note_form = NoteForm(data=request.POST)
+        if note_form.is_valid():
+            new_note=note_form.save(commit=False)
+            new_note.contact=contact
+            new_note.save()
+    return render(request, "contacts/individual_contact.html", {"contact":contact, "form": note_form})
 
 # def view_notes(request, pk):
 #     contact = get_object_or_404(Contact, pk=pk)
